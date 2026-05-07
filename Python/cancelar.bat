@@ -1,0 +1,1 @@
+shutdown /s /c Desligamento cancelado com sucesso!
