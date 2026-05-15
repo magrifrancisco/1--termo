@@ -1,53 +1,145 @@
-# ● O estacionamento possui um total de 500 vagas.
-# ● O sistema deve manter um contador de vagas ocupadas. Se o estacionamento estiver lotado, a
-# cancela de entrada não deve abrir para novos clientes (exceto para quem possui Tag de Acesso
-# Rápido, pois estes têm vagas reservadas).
 
+# SISTEMA DE ESTACIONAMENTO - SHOPPING
 
-total_ticket = 15
-hora_extra = 3
-num_vagas = 500
 import time
+
+num_vagas = 500
+vagas_tag = 50
+
+valor_fixo = 15
+hora_extra = 3
+
+
 while True:
 
+    print(" BEM-VINDO AO SHOPPING LIMEIRA ")
 
-    print("Bem-Vindo ao shopping limeira")
-    hora_entrada = float(input("Que horas você entrou? "))
-    tipo_acesso = int(input("Qual é o seu tipo de acesso ? \n 1- ticket: \n 2- tag: \n 3- cliente especial: \n 4- Sair: \n"))
-    if tipo_acesso == 2:
+    print("1 - Ticket")
+    print("2 - TAG")
+    print("3 - Cliente Especial")
+    print("4 - Sair")
 
-        print("Pegue seu ticket de acesso e siga em frente!")
-        num_vagas  <=1
-        print("Seja Bem-Vindo. Siga em frente.")
-        hora_saida = float(input("Digite a hora de saída:"))
-        total_estacionamento = hora_saida - hora_entrada
-        print(f"O tempo de permanência no estacionamento foi de {total_estacionamento}")
-        print(f"O valor total a ser pago é de {total_ticket}")
-        print("Saída Liberada, Volte Sempre!")
-        continue
-    elif tipo_acesso == 1:
-        print("pressione o botão abaixo.")
-        time.sleep(3)
-        print("Verificando vagas disponíveis no sistema")
-        time.sleep(1)
-        print("Perfeito! Vaga Disponível, siga em frente!")
-    if tipo_acesso == 3:
-        valor_tag = total_ticket + (total_ticket * 0.1)
-        print("Você terá 10% de desconto! ")
-        print(f"O valor a ser pago será{valor_tag}")
-        tempo_estacionamento = float(input("Quanto tempo você ficou no estacionamento ? "))
-    if tempo_estacionamento <= 0.15:
-        print("Você não terá que pagar pelo estacionamento! ")
-    elif tempo_estacionamento == 3:
-        print("você terá que pagar 15,00 pelo estacionamento! ")
-    elif tempo_estacionamento > 3:
-        total_ticket = 15
-        print(f"Será cobrado um valor adicional por hora {(tempo_estacionamento * total_ticket) + 3}")
+    tipo_acesso = int(
+        input("Qual é o seu tipo de acesso? ")
+    )
+
+    if tipo_acesso == 4:
+
+        print("Sistema encerrado.")
         break
 
+
+    elif tipo_acesso == 1:
+
+        print("\nPressione o botão abaixo.")
+        time.sleep(2)
+
+        if num_vagas <= vagas_tag:
+
+            print("Estacionamento lotado.")
+            continue
+
+        print("Vaga disponível.")
+        num_vagas -= 1
+
+
+    elif tipo_acesso == 2:
+
+        print("\nVerificando TAG...")
+        time.sleep(2)
+
+        if num_vagas <= 0 and vagas_tag <= 0:
+
+            print("Estacionamento lotado.")
+            continue
+
+        print("TAG validada com sucesso.")
+        vagas_tag -= 1
+
+
+    elif tipo_acesso == 3:
+
+        print("\nCliente especial identificado.")
+
+
     else:
-        print("Saída liberada!")
-        break    
+
+        print("Opção inválida.")
+        continue
 
 
-                
+    hora_entrada = float(
+        input("Digite a hora de entrada: ")
+    )
+
+    hora_saida = float(
+        input("Digite a hora de saída: ")
+    )
+
+    tempo_estacionamento = (
+        hora_saida - hora_entrada
+    )
+
+    print(
+        f"Tempo no estacionamento: "
+        f"{tempo_estacionamento} horas"
+    )
+
+
+    if tempo_estacionamento <= 0.15:
+
+        total_ticket = 0
+
+    elif tempo_estacionamento <= 3:
+
+        total_ticket = valor_fixo
+
+    else:
+
+        total_ticket = (
+            valor_fixo +
+            ((tempo_estacionamento - 3)
+            * hora_extra)
+        )
+
+
+    if tipo_acesso == 2:
+
+        total_ticket = (
+            total_ticket -
+            (total_ticket * 0.10)
+        )
+
+        print(
+            "Cliente TAG possui "
+            "10% de desconto."
+        )
+
+
+    print(
+        f"Valor total: "
+        f"R$ {total_ticket:.2f}"
+    )
+
+
+    pagamento = input(
+        "Pagamento realizado? (s/n): "
+    )
+
+    if pagamento == "s":
+
+        print("Pagamento confirmado.")
+        print("Saída liberada.")
+
+        if tipo_acesso == 1:
+
+            num_vagas += 1
+
+        elif tipo_acesso == 2:
+
+            vagas_tag += 1
+
+    else:
+
+        print("Pagamento pendente.")
+        print("Cancela fechada.")
