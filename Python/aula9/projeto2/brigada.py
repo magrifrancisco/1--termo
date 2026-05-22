@@ -26,3 +26,31 @@
 # Se o setor for de trabalho em altura, liste o cinturão de segurança e tabalarte 
 
 # Requisitos Não Funcionais 
+
+
+
+import time
+# def identificação_funcionarios():
+
+print("========================================")
+print("SISTEMA DE CONTROLE DE FUNCIONÁRIO SEMST")
+print("========================================")
+    
+nome_funcionarios = input("Qual é o seu nome?: ")
+setor_funcionario = input("Em qual setor você atua?: ")
+print("Brigada")
+treinamentos = input("Qual treinamento você irá realizar ?: ")
+
+    # status_treinamento = input("Qual é o seu status de treinamento?: \n ")
+if setor_funcionario == "NR-35":
+    print("Você deveá usar:")
+    EPIs = ["Luvas de alta tensão", "Botas dielétricas"]
+    for item in EPIs:
+        print(item)
+if treinamentos == "NR-10":
+     print("Qual treinamento você irá realizar ?: ")
+elif treinamentos == "NR-35":
+    print("")
+
+elif treinamentos == "brigada":
+    print("")
