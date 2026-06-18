@@ -40,12 +40,12 @@ from tkinter import messagebox
 def solicitar_informacoes():
     # .get() serve para buscar o texto que foi digitado
     nome_usuario = campo_nome.get()
-    idade_usuario = campo_idade.get()
-    if nome_usuario == "":
+    idade_usuario = int( campo_idade.get())
+    if nome_usuario == "" and idade_usuario == "":
         messagebox.showwarning("Aviso", "Por Favor, digite seu nome :)")
 
     else:
-        messagebox.showinfo("Saudações, querido aluno", f"Olá, {nome_usuario}, Sua idade é {idade_usuario} Seja Bem-Vindo ao mundo das interfaces gráficas.")
+        messagebox.showinfo("Saudações, querido aluno", f"Olá, {nome_usuario}, Sua idade é {2026-idade_usuario} Seja Bem-Vindo ao mundo das interfaces gráficas.")
 
 # 2. Configuração de janela
 app = tk.Tk()
@@ -61,16 +61,16 @@ campo_nome.grid(row=1, column=0, padx=10, pady=5)
 
 btn_cadastrar = tk.Button(app, text="Cadastrar",
 command=solicitar_informacoes)
-btn_cadastrar.grid(row=2, column=0, pady=15)
+btn_cadastrar.grid(row=4, column=0, pady=15)
 
 btn_fechar = tk.Button(app, text="Fechar", command=app.destroy)
-btn_fechar.grid(row=3, column=0,pady=5)
+btn_fechar.grid(row=5, column=0,pady=5)
 
-lbl_idade_usuario = tk.Label(app,text="Digite Sua Idade :) ")
-# lbl_idade_usuario.pack(pady=10)
+lbl_idade_usuario = tk.Label(app,text="Digite o ano do seu nascimento:) ")
+lbl_idade_usuario.grid(row=2, column=0, padx=10, pady=10)
 
 campo_idade = tk.Entry(app,font=("Arial", 12))
-# campo_idade.pack(pady=5)
+campo_idade.grid(row=3, column=0, padx=10, pady=10)
 
 btn_cadastrar = tk.Button(app, text="Cadastrar",
 command=solicitar_informacoes)

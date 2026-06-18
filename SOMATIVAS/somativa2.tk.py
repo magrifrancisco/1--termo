@@ -265,4 +265,104 @@
 # btn_verificar = tk.Button(janela, text="Verificar Segurança", bg="green", command=verificar_seguranca)
 # btn_verificar.grid(row=2, column=0, columnspan=2, pady=10)
 
+# 8- Cálculo de Descarte: Peça o total de peças produzidas e o total de defeituosas. Se
+# o descarte for maior que 5% do total, exiba "Revisar Processo", caso contrário,
+# "Processo Otimizado".
+
+# import tkinter as tk
+# from tkinter import messagebox, ttk
+
+# def calcular_descarte():
+#     if ent_total_pecas.get() == "" or ent_pecas_defeituosas.get() == "":
+#         messagebox.showwarning("Verificar Dados", "Preencha todos os campos.")
+#     elif ent_total_pecas.get() and ent_pecas_defeituosas.get():
+#         total_pecas = int(ent_total_pecas.get())
+#         pecas_defeituosas = int(ent_pecas_defeituosas.get())
+#         if total_pecas > 0:
+#             percentual_descarte = (pecas_defeituosas / total_pecas) * 100
+#             if percentual_descarte > 5:
+#                 messagebox.showwarning("Cálculo de Descarte", "Revisar Processo")
+#             else:
+#                 messagebox.showinfo("Cálculo de Descarte", "Processo Otimizado")
+#         else:
+#             messagebox.showerror("Erro", "O total de peças deve ser maior que zero.")
+#     else:
+#         messagebox.showerror("Erro", "Por favor, insira números válidos.")
+
+# janela = tk.Tk()
+# janela.title("Cálculo de Descarte")
+# janela.geometry("400x300")
+# janela.configure(bg="white")
+
+# lbl_total_pecas = tk.Label(janela, text="Total de Peças Produzidas:")
+# lbl_total_pecas.grid(row=0, column=0, pady=10, padx=10)
+
+# ent_total_pecas = tk.Entry(janela)
+# ent_total_pecas.grid(row=0, column=1, pady=5)
+
+# lbl_pecas_defeituosas = tk.Label(janela, text="Total de Peças Defeituosas:")
+# lbl_pecas_defeituosas.grid(row=1, column=0, pady=10, padx=10)
+
+# ent_pecas_defeituosas = tk.Entry(janela)
+# ent_pecas_defeituosas.grid(row=1, column=1, pady=5)
+
+# btn_calcular = tk.Button(janela, text="Calcular Descarte", bg="green", command=calcular_descarte)
+# btn_calcular.grid(row=2, column=0, columnspan=2, pady=10)   
+
+# janela.mainloop()
+
+# 9. Validação de Medida: Uma peça deve ter entre 9.8mm e 10.2mm. Peça a medida e diga se está dentro da tolerância, acima ou abaixo.
+
+# import tkinter as tk
+# from tkinter import messagebox, ttk
+
+# def validar_medida():
+#     if ent_medida.get() == "":
+#         messagebox.showwarning("Verificar Dados", "Insira a medida da peça.")
+#     elif ent_medida.get():
+#         medida = float(ent_medida.get())
+#         if 9.8 <= medida <= 10.2:
+#             messagebox.showinfo("Validação de Medida", "A peça está dentro da tolerância.")
+#         elif medida < 9.8:
+#             messagebox.showinfo("Validação de Medida", "A peça está abaixo da tolerância.")
+#         else:
+#             messagebox.showinfo("Validação de Medida", "A peça está acima da tolerância.")
+#     else:
+#         messagebox.showerror("Erro", "Por favor, insira um número válido.")
+
+# janela = tk.Tk()
+# janela.title("Validação de Medida")
+# janela.geometry("400x300")
+# janela.configure(bg="white")
+
+# lbl_medida = tk.Label(janela, text="Medida da Peça (mm):")
+# lbl_medida.grid(row=0, column=0, pady=10, padx=10)
+
+# ent_medida = tk.Entry(janela)
+# ent_medida.grid(row=0, column=1, pady=5)
+
+# btn_validar = tk.Button(janela, text="Validar Medida", bg="green", command=validar_medida)
+# btn_validar.grid(row=1, column=0, columnspan=2, pady=10)
+
+# janela.mainloop()
+
+# 10.Contagem Regressiva de Setup: Use um for para fazer uma contagem regressiva de 10 até 1 para o início de uma prensa, e finalize com "Prensa Ativada!".
+
+# import tkinter as tk
+# from tkinter import messagebox, ttk
+
+# def iniciar_contagem():
+#     for i in range(10, 0, -1):
+#         messagebox.showinfo("Contagem Regressiva", f"Contagem: {i}")
+#     messagebox.showinfo("Contagem Regressiva", "Prensa Ativada!")
+
+# janela = tk.Tk()
+# janela.title("Contagem Regressiva de Setup")
+# janela.geometry("400x300")
+# janela.configure(bg="white")
+
+# btn_iniciar = tk.Button(janela, text="Iniciar Contagem", bg="green", command=iniciar_contagem)
+# btn_iniciar.grid(row=0, column=0, columnspan=2, pady=10)
+
+
 # janela.mainloop()
